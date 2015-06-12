@@ -105,9 +105,8 @@ $ java FileServer -ip 127.0.0.1 -port 5938 -dir /Users/amir/Desktop/backup -prim
 <h4>Methods in the Response message</h4>
 <p><strong> ACK </strong> - the server acknowledges the committed transaction to the client or indicates a successful response to the client's NEW_TXN request.</p>
 <p><strong> ASK_RESEND </strong> - the server asks the client to resend a message for the given transaction whose sequence number is specified in the "message sequence number" field. This is in a way a "request" message, but it is send from the server to the client only in response to another message (such as a COMMIT request for which the server does not have all writes) and it will be sent over a socket opened by the client, so technically this is still a response message. </p>
-<p><strong> ERROR </strong> - the server reports an error to the client. The error code and the ID of the transaction that generated the error must be included in the appropriate fields in the message.</p>
+<p><strong> ERROR </strong> - the server reports an error to the client. The error code and the ID of the transaction that generated the error is included in the appropriate fields in the message.</p>
 <h4>Error codes:</h4>
-<p>The following error codes are mandatory. You may implement more error codes, if you wish to enhance the client experience.</p>
 <ul><li><strong>201</strong> - Invalid transaction ID. Sent by the server if the client had sent a message that included an invalid transaction ID, i.e., a transaction ID that the server does not remember
 </li></ul>
 <ul><li><strong>202</strong> - Invalid operation. Sent by the server if the client attemtps to execute an invalid operation - i.e., write as part of a transaction that had been committed
