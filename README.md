@@ -67,6 +67,7 @@ A request message is a message that the client sends to the server. A client sen
 A request message is to have the following format:
 
 Method | Transaction ID | Sequence number | Content Length | Data
+--- | --- | --- | --- | ---
 WRITE | 67681 |2 | 13 | Hello, world!
 
 
