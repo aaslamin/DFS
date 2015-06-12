@@ -53,7 +53,7 @@ $ java FileServer -ip 127.0.0.1 -port 5938 -dir /Users/amir/Desktop/backup -prim
 ### Client-Server Communication Protocol
 
 <p>A message format similar to HTTP has been implemented. </p>
-<h3>Request message</h3>
+<h4>Request message</h4>
 <p>A request message is a message that the client sends to the server. A client sends a request to the server for the following reasons:</p>
 <ul><li>Create a new transaction.
 </li><li>Read a file.
@@ -81,7 +81,7 @@ $ java FileServer -ip 127.0.0.1 -port 5938 -dir /Users/amir/Desktop/backup -prim
 <p><strong>WRITE</strong> - the client asks the server to write data as part of an existing transaction.</p>
 <p><strong>COMMIT</strong> - the client asks the server to commit the transaction. In this case, the message sequence number field includes the total number of writes that were sent by the client as part of this transaction. This number should equal the sequence number of the last write, since NEW_TXN message has the sequence number of 0 and the first write has the sequence number of 1. </p>
 <p><strong>ABORT</strong> - the client asks the server to abort the transaction.</p>
-<h3>Response message</h3>
+<h4>Response message</h4>
 <p>A response is a message that the server sends to the client. A server sends the response to the client for the following reasons:</p>
 <ul><li>To acknowledge a receipt of a message.
 </li><li>To ask the client to resend a message that the server did not receive. 
@@ -89,7 +89,7 @@ $ java FileServer -ip 127.0.0.1 -port 5938 -dir /Users/amir/Desktop/backup -prim
 </li></ul>
 <p>A response message is to have the following format: </p>
 <table><tr><th>Method</th><th>Transaction ID</th><th>Sequence number</th><th>Error code</th><th>Content Length</th><th>Data/Reason</th></tr>
-<tr><td>ERROR</td><td>67681</td><td>2</td><td>201</td><td>14</td><td>Invalid TXN ID</td></tr>
+<tr><td>ERROR</td><td>67681</td><td>2</td><td>201</td><td>14</td><td>Invalid TID</td></tr>
 </table>
 <p>Just like the request message, the response message consists of several fields and the fields are separated from one another using a single ' ' (space) character.</p>
 <p><strong>Method field</strong> contains the type of operation (all methods are listed bellow)</p>
