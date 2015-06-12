@@ -16,9 +16,7 @@ $ lsof -i:<port_number>
 
 ## Syntax of the Primary File: 
 
-[PRIMARY_IP_ADDRESS] [PRIMARY_PORT] [COMMIT_PORT] 
-
-*[COMMIT_PORT] is updated by the server as necessary, you do not need to provide this value.*
+[PRIMARY_IP_ADDRESS] [PRIMARY_PORT]
 
 ### Sample file: 
 
@@ -39,7 +37,7 @@ $ java FileServer -ip <value> -port <value> -dir <value> -primary <FFF> -bip <XX
 ```
 $ java FileServer -dir /Users/amir/Desktop/test -primary /Users/amir/Desktop/primary.txt -bip 127.0.0.1 -bport 5938
 ```
-**(3).** Start the Backup Server *(‘ip’ And ‘port’ must match the values you provided for ‘bip’ and ‘bport’ above)*:
+**(3).** Start the Backup Server *(‘ip’ And ‘port’ **must match** the values you provided for ‘bip’ and ‘bport’ above)*:
 ```
 $ java FileServer -ip <XXX> -port <YYY> -dir <value> -primary <FFF>
 ```
