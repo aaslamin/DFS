@@ -1,7 +1,9 @@
 ## Distributed File System: 
 
 - Make sure you are using available ports prior to running the program. Prior to running the code, use the following POSIX command to check if the port you want to use is available: 
+
 	$ lsof -i:<port_number> 
+
 - The above step is just for extra precaution, my code will do sufficient error checking. 
 - Backup server will respond with an appropriate error message if a client attempts to connect to it 
 ..* it will provide the client with the IP:Port of the primary  
@@ -26,24 +28,25 @@
 ## How to run the server(s) via terminal (order matters): 
 
 1. Compile the source using the makefile provided:
-
-	$ make 
-
+```
+$ make 
+```
 2. Start the Primary Server:
-
-	$ java FileServer -ip <value> -port <value> -dir <value> -primary <FFF> -bip <XXX> -bport <YYY>
-
+```
+$ java FileServer -ip <value> -port <value> -dir <value> -primary <FFF> -bip <XXX> -bport <YYY>
+```
+Example:
+```
+$ java FileServer -dir /Users/amir/Desktop/test -primary /Users/amir/Desktop/primary.txt -bip 127.0.0.1 -bport 5938
+```
+3. Start the Backup Server *(‘ip’ And ‘port’ must match the values you provided for ‘bip’ and ‘bport’ above)*:
+```
+$ java FileServer -ip <XXX> -port <YYY> -dir <value> -primary <FFF>
+```
 Example: 
-
-	$ java FileServer -dir /Users/amir/Desktop/test -primary /Users/amir/Desktop/primary.txt -bip 127.0.0.1 -bport 5938
-
-3. Start the Backup Server *(‘ip’ And ‘port’ Must Match The Values You Provided For ‘bip’ And ‘bport’ Above)*:
-
-	$ java FileServer -ip <XXX> -port <YYY> -dir <value> -primary <FFF>
-
-Example: 
-
-	$ java FileServer -ip 127.0.0.1 -port 5938 -dir /Users/amir/Desktop/backup -primary /Users/amir/Desktop/primary.txt
+```
+$ java FileServer -ip 127.0.0.1 -port 5938 -dir /Users/amir/Desktop/backup -primary /Users/amir/Desktop/primary.txt
+```
 
 4. System is now up and running 
 
