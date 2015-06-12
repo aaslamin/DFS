@@ -52,27 +52,7 @@ $ java FileServer -ip 127.0.0.1 -port 5938 -dir /Users/amir/Desktop/backup -prim
 
 ### Client-Server Communication Protocol
 
-A message format similar to HTTP has been implemented. 
-
-#### Request message: 
-
-A request message is a message that the client sends to the server. A client sends a request to the server for the following reasons:
-
-- Create a new transaction.
-- Read a file.
-- Submit a write request that is part of an existing transaction.
-- Commit an existing transaction.
-- Abort a transaction.
-
-A request message is to have the following format:
-
-Method | Transaction ID | Sequence number | Content Length | Data
---- | --- | --- | --- | ---
-WRITE | 67681 |2 | 13 | Hello, world!
-
-
-<h2>Client-Server Communication Protocol</h2>
-<p>We will use the message format similar to HTTP. </p>
+<p>A message format similar to HTTP has been implemented. </p>
 <h3>Request message</h3>
 <p>A request message is a message that the client sends to the server. A client sends a request to the server for the following reasons:</p>
 <ul><li>Create a new transaction.
@@ -145,10 +125,7 @@ WRITE | 67681 |2 | 13 | Hello, world!
 Here is my data that goes into file
 </pre>
 <p>An example commit request message:</p>
-<pre>COMMIT 35551 8 0
-
-
-
+<pre>COMMIT 35551 8 0</pre>
 
 ### How to gracefully kill the server via terminal: 
 
