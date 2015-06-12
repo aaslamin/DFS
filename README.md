@@ -6,13 +6,13 @@ $ lsof -i:<port_number>
 ```
 - The above step is just for extra precaution, my code will do sufficient error checking
 - Backup server will respond with an appropriate error message if a client attempts to connect to it
-  * it will provide the client with the IP:Port of the primary 
-- Once the server(s) are running, DO NOT MODIFY the primary file 
+  * in such a scenario, the server will respond with the address of the primary 
+- Once the server(s) are running, **do NOT modify** the primary file 
 - When you only have the primary running and then start the backup, give the backup a few seconds to synchronize with the primary prior to crashing either server (1-2 seconds to be safe)
 - Backup will detect the death of the primary within 2 seconds and will update the primary file 
 - When reading the primary file, you can ignore the third value (explained below) 
 - Contact me if you have any problems running the server 
-
+	
 
 ## Syntax of the Primary File: 
 
@@ -20,18 +20,18 @@ $ lsof -i:<port_number>
 
 *[COMMIT_PORT] is updated by the server as necessary, you do not need to provide this value.*
 
-### Sample Primary File: 
+### Sample file: 
 
 127.0.0.1 8080 
 
 
 ## How to run the server(s) via terminal (order matters): 
 
-1. Compile the source using the makefile provided:
+(1) Compile the source using the makefile provided:
 ```
 $ make 
 ```
-2. Start the Primary Server:
+(2) Start the Primary Server:
 ```
 $ java FileServer -ip <value> -port <value> -dir <value> -primary <FFF> -bip <XXX> -bport <YYY>
 ```
@@ -39,7 +39,7 @@ $ java FileServer -ip <value> -port <value> -dir <value> -primary <FFF> -bip <XX
 ```
 $ java FileServer -dir /Users/amir/Desktop/test -primary /Users/amir/Desktop/primary.txt -bip 127.0.0.1 -bport 5938
 ```
-3. Start the Backup Server *(‘ip’ And ‘port’ must match the values you provided for ‘bip’ and ‘bport’ above)*:
+(3) Start the Backup Server *(‘ip’ And ‘port’ must match the values you provided for ‘bip’ and ‘bport’ above)*:
 ```
 $ java FileServer -ip <XXX> -port <YYY> -dir <value> -primary <FFF>
 ```
@@ -47,7 +47,7 @@ $ java FileServer -ip <XXX> -port <YYY> -dir <value> -primary <FFF>
 ```
 $ java FileServer -ip 127.0.0.1 -port 5938 -dir /Users/amir/Desktop/backup -primary /Users/amir/Desktop/primary.txt
 ```
-4. System is now up and running 
+(4) System is now up and running 
 
 
 ### How to gracefully kill the server via terminal: 
@@ -65,10 +65,10 @@ $ kill -9 <PID>
 A hard kill will allow you to observe the hidden files that may have been created by the server during runtime. A hard kill does not delete any files. 
 
 
-
 ## Usage: 
 
-	$ java FileServer -ip [ip_address_string] -port [port_number] -dir <directory_path> -primary <primary_file_path> -bip <backup_ip_address> -bport <backup_port_number>
+'''
+$ java FileServer -ip [ip_address_string] -port [port_number] -dir <directory_path> -primary <primary_file_path> -bip <backup_ip_address> -bport <backup_port_number>
 
 The following options are available: 
 -dir 		 (required) Absolute path to the server's filesystem (i.e. /Users/john/Desktop/tmp/) 
@@ -77,12 +77,6 @@ The following options are available:
 -port 		 Port number to bind to (default: 8080) 
 -bip 		 IP address of the backup server (only provide this field if you are starting the primary server 
 -bport 		 Port number of the backup server (only provide this field if you are starting the primary server 
-
-
-## Syntax Of Primary File: 
-
-[IP_ADDRESS] [PORT] [COMMIT_PORT]
-
-*[COMMIT_PORT] is updated by the server as necessary, you do not need to provide this value.*
+'''
 
 
