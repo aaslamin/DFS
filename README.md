@@ -27,11 +27,11 @@ $ lsof -i:<port_number>
 
 ## How to run the server(s) via terminal (order matters): 
 
-**(1)** Compile the source using the makefile provided:
+**(1).** Compile the source using the makefile provided:
 ```
 $ make 
 ```
-**(2)** Start the Primary Server:
+**(2).** Start the Primary Server:
 ```
 $ java FileServer -ip <value> -port <value> -dir <value> -primary <FFF> -bip <XXX> -bport <YYY>
 ```
@@ -39,7 +39,7 @@ $ java FileServer -ip <value> -port <value> -dir <value> -primary <FFF> -bip <XX
 ```
 $ java FileServer -dir /Users/amir/Desktop/test -primary /Users/amir/Desktop/primary.txt -bip 127.0.0.1 -bport 5938
 ```
-**(3)** Start the Backup Server *(‘ip’ And ‘port’ must match the values you provided for ‘bip’ and ‘bport’ above)*:
+**(3).** Start the Backup Server *(‘ip’ And ‘port’ must match the values you provided for ‘bip’ and ‘bport’ above)*:
 ```
 $ java FileServer -ip <XXX> -port <YYY> -dir <value> -primary <FFF>
 ```
@@ -47,7 +47,30 @@ $ java FileServer -ip <XXX> -port <YYY> -dir <value> -primary <FFF>
 ```
 $ java FileServer -ip 127.0.0.1 -port 5938 -dir /Users/amir/Desktop/backup -primary /Users/amir/Desktop/primary.txt
 ```
-**(4)** System is now up and running 
+**(4).** System is now up and running (you may begin sending transaction requests to the primary) 
+
+
+### Client-Server Communication Protocol
+
+A message format similar to HTTP has been implemented. 
+
+#### Request message: 
+
+A request message is a message that the client sends to the server. A client sends a request to the server for the following reasons:
+
+- Create a new transaction.
+- Read a file.
+- Submit a write request that is part of an existing transaction.
+- Commit an existing transaction.
+- Abort a transaction.
+
+A request message is to have the following format:
+
+Method | Transaction ID | Sequence number | Content Length | Data
+WRITE | 67681 |2 | 13 | Hello, world!
+
+
+
 
 
 ### How to gracefully kill the server via terminal: 
