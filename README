@@ -1,8 +1,5 @@
-Note: make your window full screen to read this README document
+Overall implementation comments: 
 
-Overall implementation comments (please read): 
-
-- All features have been implemented. Program should be able to successfully complete the test scenarios highlighted in the assignment description.  
 - Make sure you are using available ports prior to running the program. Prior to running the code, use the following POSIX command to check if the port you want to use is available: 
 $ lsof -i:<port_number> 
 - The above step is just for extra precaution, my code will do sufficient error checking. 
