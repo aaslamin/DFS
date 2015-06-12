@@ -95,7 +95,7 @@ $ java FileServer -ip 127.0.0.1 -port 5938 -dir /Users/amir/Desktop/backup -prim
 <p><strong>Method field</strong> contains the type of operation (all methods are listed bellow)</p>
 <p><strong>Transaction ID</strong> field specifies the ID of the transaction to which this message relates</p>
 <p><strong>Message sequence number</strong> field in the context of response message specifies the sequence number of the message that must be retransmitted. This field only makes sense if the method is ASK_RESEND.</p>
-<p><strong>Error code field</strong> specifies the error code if the method is ERROR (all mandatory error codes are listed below)</p>
+<p><strong>Error code field</strong> specifies the error code if the method is ERROR (error codes listed below)</p>
 <p><strong>Content length field</strong> specifies the length of reason (in bytes)</p>
 <p><strong>Data/Reason field</strong> contains file data if the message is a response to a read request or a human readable string specifying the reason for error if the message is an error message. </p>
 <ul><li>The first five fields of the message constitute a message header
