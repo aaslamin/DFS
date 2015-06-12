@@ -1,12 +1,12 @@
 ## Distributed File System: 
 
 - Make sure you are using available ports prior to running the program. Prior to running the code, use the following POSIX command to check if the port you want to use is available: 
-
-	$ lsof -i:<port_number> 
-
-- The above step is just for extra precaution, my code will do sufficient error checking. 
-- Backup server will respond with an appropriate error message if a client attempts to connect to it 
-..* it will provide the client with the IP:Port of the primary  
+```
+$ lsof -i:<port_number> 
+```
+- The above step is just for extra precaution, my code will do sufficient error checking
+- Backup server will respond with an appropriate error message if a client attempts to connect to it
+  * it will provide the client with the IP:Port of the primary 
 - Once the server(s) are running, DO NOT MODIFY the primary file 
 - When you only have the primary running and then start the backup, give the backup a few seconds to synchronize with the primary prior to crashing either server (1-2 seconds to be safe)
 - Backup will detect the death of the primary within 2 seconds and will update the primary file 
@@ -35,7 +35,7 @@ $ make
 ```
 $ java FileServer -ip <value> -port <value> -dir <value> -primary <FFF> -bip <XXX> -bport <YYY>
 ```
-Example:
+  * Example: 
 ```
 $ java FileServer -dir /Users/amir/Desktop/test -primary /Users/amir/Desktop/primary.txt -bip 127.0.0.1 -bport 5938
 ```
@@ -43,11 +43,10 @@ $ java FileServer -dir /Users/amir/Desktop/test -primary /Users/amir/Desktop/pri
 ```
 $ java FileServer -ip <XXX> -port <YYY> -dir <value> -primary <FFF>
 ```
-Example: 
+  * Example: 
 ```
 $ java FileServer -ip 127.0.0.1 -port 5938 -dir /Users/amir/Desktop/backup -primary /Users/amir/Desktop/primary.txt
 ```
-
 4. System is now up and running 
 
 
